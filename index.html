@@ -1,0 +1,59 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türev Hesap Makinesi</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #calculator {
+    text-align: center;
+  }
+  #output {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  input[type="text"] {
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div id="calculator">
+  <h2>Türev Hesap Makinesi</h2>
+  <div id="output"></div>
+  <input type="text" id="expressionInput" placeholder="Türev al">
+  <button onclick="evaluateExpression()">Gir</button>
+  (değişkeni x alınız.)
+<script>
+function evaluateExpression() {
+  var expression = document.getElementById('expressionInput').value;
+  try {
+    var derivative = math.derivative(expression, 'x').toString(); // Calculate the derivative
+    document.getElementById('output').innerText = 'Derivative: ' + derivative;
+  } catch (error) {
+    document.getElementById('output').innerText = 'Error: Invalid expression';
+  }
+}
+
+// Add event listener for Enter key press
+document.getElementById('expressionInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    evaluateExpression();
+  }
+});
+</script>
+
+</body>
+</html>
