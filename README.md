@@ -1,0 +1,2 @@
+# turev
+Türev hesaplayıcı.
